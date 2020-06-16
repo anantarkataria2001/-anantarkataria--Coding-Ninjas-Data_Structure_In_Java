@@ -1,0 +1,31 @@
+
+public class Solution {
+	
+	public static int minCount(int n) {
+		// Write your code here
+  int storage[]=new int[n+1];
+      storage[0]=0;
+      if(n>0)
+      storage[1]=1;
+      if(n>1)
+      storage[2]=2;
+      if(n>2)
+      storage[3]=3;
+    for(int i=4;i<=n;i++){
+        int num=(int)Math.sqrt(i);
+        int ans=Integer.MAX_VALUE;
+        while(num>0){
+        int remaning=i-(num*num);
+        int sum=1+storage[remaning];
+        num--;
+           if(ans>sum){
+            ans=sum;
+           }
+        storage[i]=ans;            
+        }
+    }
+    return storage[n];    
+	}
+
+	
+}
