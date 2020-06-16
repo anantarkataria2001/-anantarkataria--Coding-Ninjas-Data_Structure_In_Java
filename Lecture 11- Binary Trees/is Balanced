@@ -1,0 +1,51 @@
+import java.util.*;
+public class Solution {
+
+/*	Binary Tree Node class
+ * 
+ * class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+		
+		public BinaryTreeNode(T data) {
+			this.data = data;
+		}
+	}
+	*/
+	   public static  int height(BinaryTreeNode<Integer> root) 
+    { 
+    
+        if (root == null) 
+            return 0; 
+  
+   
+        return 1 + Math.max(height(root.left), height(root.right)); 
+    } 
+	public static boolean checkBalanced(BinaryTreeNode<Integer> root){
+		
+		// Write your code here
+		 int lh; 
+  
+        int rh; 
+  
+    
+        if (root == null) 
+            return true; 
+  
+      
+        lh = height(root.left); 
+        rh = height(root.right); 
+  
+        if (Math.abs(lh - rh) <= 1
+            && checkBalanced(root.left) 
+            && checkBalanced(root.right)) 
+            return true; 
+  
+      
+        return false; 
+	}
+
+	
+	
+}
