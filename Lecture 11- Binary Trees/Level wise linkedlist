@@ -1,0 +1,75 @@
+import java.util.ArrayList;
+
+
+public class Solution {
+
+	/*	Binary Tree Node class
+	 * 
+	 * class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+		}
+	}
+	 */
+
+	/* class Node<T> {
+		T data;
+		Node<T> next;
+		Node(T data){
+			this.data = data;
+		}
+	}
+*/
+	public static ArrayList<Node<BinaryTreeNode<Integer>>> LLForEachLevel(BinaryTreeNode<Integer> root) {
+		
+		// Write your code here
+   ArrayList<Node<BinaryTreeNode<Integer>>> al = new ArrayList<Node<BinaryTreeNode<Integer>>>();
+        QueueUsingLL<BinaryTreeNode<Integer>> myQ = new QueueUsingLL<BinaryTreeNode<Integer>>();
+        myQ.enqueue(root);
+        myQ.enqueue(null);
+        try{ 
+            Node<BinaryTreeNode<Integer>> head = null;
+            Node<BinaryTreeNode<Integer>> tail = null;
+            while(!myQ.isEmpty()){
+                BinaryTreeNode<Integer> temp = myQ.dequeue();
+                if(temp == null){
+             
+                    al.add(head);
+                    head = null;
+                    tail = null;
+                    if(!myQ.isEmpty()){
+                     myQ.enqueue(null);   
+                    }
+                    continue;
+                }
+         
+                Node<BinaryTreeNode<Integer>> var = new Node<BinaryTreeNode<Integer>>(temp);
+                if(head == null){
+                    head = var;
+                    tail = var;
+                }
+                else{
+                    tail.next = var;
+                    tail = var;   
+                }
+                if(temp.left != null){
+                    myQ.enqueue(temp.left);
+                }
+                if(temp.right != null){
+                    myQ.enqueue(temp.right);
+                }
+                
+            }
+        }
+            catch(Exception e){
+                
+            }
+        return al;
+	}
+
+
+}
