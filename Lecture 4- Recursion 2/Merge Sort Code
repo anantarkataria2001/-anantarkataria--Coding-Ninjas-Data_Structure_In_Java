@@ -1,4 +1,4 @@
-
+public class solution {
 	public static void mergeSort(int[] input){
 		merging(input,0,input.length-1);
 	}
