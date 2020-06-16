@@ -1,0 +1,23 @@
+
+public class Solution {
+
+	public static int balancedTreesOfHeightH(int height){
+		// Write your code here
+  if(height == 0){
+            return 1; 
+        }
+        int storage[] = new int[height + 1];
+        storage[0] = storage[1] = 1;
+        int mod = (int) Math.pow(10, 9) + 7; 
+        for(int i = 2; i <= height; i++){
+
+            long temp1 = (long) (storage[i- 1]) * storage[ i - 1];
+            temp1 = temp1 % mod; 
+   
+            long temp2 = 2 * (long) (storage[i - 1]) * storage[ i - 2]; 
+            temp2 = temp2 % mod;
+            storage[i] = (int) (temp1 + temp2) % mod; 
+        }
+        return storage[height]; 
+	}
+}
