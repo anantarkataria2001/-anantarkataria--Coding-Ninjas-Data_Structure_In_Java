@@ -1,0 +1,19 @@
+
+public class solution {
+
+	public static int multiplyTwoIntegers(int m, int n){
+		// Write your code here
+	int product = m*n;
+        if(n==0){
+            return 0;
+        }
+        else if (m<n){
+            return m * n;
+        }
+    else 
+        return m+(m*(n-1));
+}
+public static void main(String[] args){
+    System.out.println();
+}
+}
