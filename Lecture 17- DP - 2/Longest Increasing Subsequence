@@ -1,0 +1,35 @@
+
+public class Solution {
+
+	public static int lis(int arr[]) {
+		
+		/*Your class should be named Solution. 
+		*Don't write main().
+	 	*Don't take input, it is passed as function argument.
+	 	*Don't print output.
+	 	*Taking input and printing output is handled automatically.
+		*/ 		
+    int out[] = new int[arr.length];
+        arr[0]=0;
+        int ans = 1;
+        for(int i=1;i<out.length;i++)
+        {
+            out[i]=1;
+            int max = 1;
+        for(int j=i-1;j>=0;j--)
+        {
+            if(arr[j] < arr[i])
+            {
+                int op = out[j]+1;
+                if(op > max)
+                    max = op;
+            }
+        }
+            
+        out[i]=max;
+            if(max > ans)
+                ans=max;
+	}	
+        return ans;
+	}	
+}
