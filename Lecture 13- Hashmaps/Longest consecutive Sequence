@@ -1,0 +1,44 @@
+import java.util.*;
+public class Solution {
+	public static ArrayList<Integer> longestConsecutiveIncreasingSequence(int[] arr) {
+		//Your Code goes here
+          ArrayList<Integer> list = new ArrayList<>();
+
+        int maxlength = 0;
+        int start = 0;
+        HashMap<Integer, Boolean> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            map.put(arr[i], true);
+
+        }
+        for (int i = 0; i < arr.length; i++) {
+            if (map.get(arr[i]) == true) {
+                int startc = arr[i];
+                int lengthc = 1;
+                int k = arr[i]+1;
+                int l = arr[i]-1;
+                while (map.containsKey(k )) {
+                    lengthc++;
+                    map.put(k, false);
+                    k++;
+                }
+                while (map.containsKey(l)) {
+                    lengthc++;
+                    map.put(l, false);
+                    startc = l;
+                    l--;
+
+                }
+                if (lengthc > maxlength) {
+                    maxlength = lengthc;
+                    start = startc;
+                }
+            }
+            
+        }
+        for (int i = start; i <start + maxlength; i++) {
+            list.add(i);
+        }
+        return list;
+	}
+}
