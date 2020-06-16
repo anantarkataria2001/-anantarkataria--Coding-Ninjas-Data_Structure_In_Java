@@ -1,0 +1,44 @@
+import java.util.ArrayList;
+
+
+public class Solution {
+
+	/*	Binary Tree Node class
+	 * 
+	 * class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+
+		public BinaryTreeNode(T data) {
+			this.data = data;
+		}
+	}
+	 */
+
+	public static BinaryTreeNode<Integer> removeAllLeaves(BinaryTreeNode<Integer> root){
+		
+		// Write your code here
+	if(root==null)
+            return null;
+        
+        if(root.right==null && root.left==null)
+        	return null;
+        
+       BinaryTreeNode<Integer> left= removeAllLeaves(root.left);
+         BinaryTreeNode<Integer> right =   removeAllLeaves(root.right);
+       
+        if(left==null)
+            root.left=null;
+        
+        
+         if(right==null)
+            root.right=null;
+        
+        
+        return root;
+	}
+
+
+
+}
