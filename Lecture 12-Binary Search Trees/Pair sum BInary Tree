@@ -1,0 +1,61 @@
+public class Solution {
+
+/*	Binary Tree Node class
+ * 
+ * class BinaryTreeNode<T> {
+		T data;
+		BinaryTreeNode<T> left;
+		BinaryTreeNode<T> right;
+		
+		public BinaryTreeNode(T data) {
+			this.data = data;
+		}
+	}
+	*/
+     public static BinaryTreeNode<Integer> find(BinaryTreeNode<Integer> root, int f)
+    {
+        if(root==null)
+            return null;
+        if(root.data.equals(f))
+        {
+            return root;
+        }
+        
+        BinaryTreeNode<Integer> l=find(root.left,f);
+        if(l!=null)
+            return l;
+        BinaryTreeNode<Integer> r=find(root.right,f);
+        if(r!=null)
+            return r;
+        return null;    
+    }
+    
+    
+    public static void nodesSumToS(BinaryTreeNode<Integer> croot,BinaryTreeNode<Integer> root, int sum) {
+	    
+	   if(croot==null)
+	   {
+	        return;
+	   }
+	   int s = sum-croot.data;
+	 
+	   BinaryTreeNode<Integer> f=null;
+	   if(croot.data<s)
+		   f=find(root,s);
+	   if(f!=null)
+	   {
+	       System.out.println(croot.data+" "+f.data);
+	   }
+	  
+	   nodesSumToS(croot.left,root,sum);
+	   nodesSumToS(croot.right,root,sum);
+	
+	}
+    
+
+	public static void nodesSumToS(BinaryTreeNode<Integer> root, int sum) {
+		// Write your code here
+        nodesSumToS(root,root,sum);
+
+	}
+}
