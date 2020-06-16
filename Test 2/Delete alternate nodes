@@ -1,0 +1,40 @@
+
+/*
+ class LinkedListNode<T> {
+	public T data;
+	public LinkedListNode<T> next;
+	public LinkedListNode(T data) {
+		this.setData(data);
+		this.next = null;
+	}
+	public T getData() {
+		return data;
+	}
+	public void setData(T data) {
+		this.data = data;
+	}
+} */
+public class Solution {
+	public static void deleteAlternateNodes(LinkedListNode<Integer> head) {
+    if(head.next==null || head.next.next==null)
+            return ;
+         LinkedListNode<Integer> temp1=head;
+         int count=0;
+        
+        while(head.next!=null)
+        {
+            
+           if(count%2!=0){
+               temp1.next=head.next;
+           }
+            temp1=head;
+            head=head.next;
+            count++;
+        }
+        
+         if(count%2!=0)
+           {  temp1.next=null;
+               
+           }
+	}
+}
